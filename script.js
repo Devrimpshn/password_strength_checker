@@ -65,7 +65,16 @@ const popularNames = [
     'gabriel', 'laura', 'alan', 'emily', 'juan', 'kimberly', 'logan', 'deborah',
     'wayne', 'dorothy', 'roy', 'lisa', 'ralph', 'nancy', 'randy', 'karen',
     'eugene', 'betty', 'vincent', 'helen', 'russell', 'sandra', 'elijah', 'donna',
-    'louis', 'carol', 'bobby', 'ruth', 'philip', 'sharon', 'johnny', 'michelle'
+    'louis', 'carol', 'bobby', 'ruth', 'philip', 'sharon', 'johnny', 'michelle',
+    // Türkçe popüler isimler
+    'ahmet', 'mehmet', 'mustafa', 'ali', 'hüseyin', 'ibrahim', 'osman', 'yusuf', 'murat', 'ömer',
+    'ramazan', 'ismail', 'emre', 'halil', 'mehmet', 'fatih', 'recep', 'burak', 'enes', 'serkan',
+    'ayşe', 'fatma', 'emine', 'hatice', 'zeynep', 'elif', 'meryem', 'esra', 'sultan', 'sevgi',
+    'gül', 'gülsüm', 'canan', 'yasemin', 'büşra', 'kübra', 'hilal', 'rabia', 'melike', 'tuğba',
+    'deniz', 'can', 'arda', 'berk', 'ece', 'melis', 'selin', 'naz', 'dilara', 'irem',
+    'aydan', 'aylin', 'aslı', 'berna', 'cem', 'cemre', 'didem', 'dilan', 'eda', 'eda',
+    'gizem', 'gökhan', 'kaan', 'kerem', 'melih', 'onur', 'özge', 'özlem', 'seda', 'sinem',
+    'tolga', 'umut', 'volkan', 'yasin', 'yavuz', 'yeliz', 'yıldız', 'yusuf', 'zeynep', 'şeyma'
 ];
 
 // Famous events, years, and cultural references
@@ -177,6 +186,8 @@ class PasswordStrengthAnalyzer {
         this.score = 0;
         this.suggestions = [];
         
+        console.log('Password:', password, 'Length:', password.length);
+        
         if (!password) {
             return this.getResult();
         }
@@ -286,7 +297,9 @@ class PasswordStrengthAnalyzer {
         
         // Check for popular names
         for (const name of popularNames) {
-            if (passwordLower.includes(name)) {
+            // Gelişmiş kelime sınırı: başında şifrenin başı veya harf/rakam olmayan karakter, sonunda harf/rakam olmayan karakter veya şifrenin sonu
+            const namePattern = new RegExp(`(^|[^a-zA-Z0-9])${name}([^a-zA-Z0-9]|$)`, 'i');
+            if (namePattern.test(passwordLower)) {
                 this.score -= 20;
                 this.suggestions.push('Avoid using common names in your password');
                 break;
@@ -319,7 +332,9 @@ class PasswordStrengthAnalyzer {
         
         // Check for famous events, movies, games, etc.
         for (const reference of famousEvents) {
-            if (passwordLower.includes(reference)) {
+            // Gelişmiş kelime sınırı: başında şifrenin başı veya harf/rakam olmayan karakter, sonunda harf/rakam olmayan karakter veya şifrenin sonu
+            const wordPattern = new RegExp(`(^|[^a-zA-Z0-9])${reference}([^a-zA-Z0-9]|$)`, 'i');
+            if (wordPattern.test(passwordLower)) {
                 this.score -= 25;
                 this.suggestions.push('Avoid using famous references (movies, games, events, names)');
                 break;
