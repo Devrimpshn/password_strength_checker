@@ -7,7 +7,7 @@ Modern and user-friendly password security analysis tool. Built with HTML, CSS, 
 
 ## 🚀 Live Demo
 
-**[Try the Project](https://devrimpshn.github.io/Password-strength-checker/)**
+**[Try the Project](https://devrimpshn.github.io/password_strength_checker/)**
 
 ## ✨ Features
 
@@ -41,7 +41,7 @@ Modern and user-friendly password security analysis tool. Built with HTML, CSS, 
 ## 📁 File Structure
 
 ```
-PasswordStrengthChecker/
+password_strength_checker/
 ├── index.html
 ├── styles.css
 ├── script.js
@@ -51,8 +51,8 @@ PasswordStrengthChecker/
 ## 🔧 Installation
 
 ```bash
-git clone https://github.com/Devrimpshn/Password-strength-checker.git
-cd Password-strength-checker
+git clone https://github.com/Devrimpshn/password_strength_checker.git
+cd password_strength_checker
 ```
 
 Open `index.html` in your browser.
